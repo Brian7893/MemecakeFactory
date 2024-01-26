@@ -1,4 +1,4 @@
-document.getElementById('meme-form').addEventListener('submit', function (e) {
+let meme = document.getElementById('meme-form').addEventListener('submit', function (e) {
   e.preventDefault();
   const imageUrl = document.getElementById('image').value;
   const topText = document.getElementById('top-text').value;
@@ -6,7 +6,9 @@ document.getElementById('meme-form').addEventListener('submit', function (e) {
 
   //create meme div
   const memeDiv = document.createElement('div');
-  memeDiv.classList.add('meme');
+  const innerMeme = document.createElement('div')
+  innerMeme.classList.add('meme');
+  memeDiv.classList.add('spacer');
 
   //create image
   const img = document.createElement('img');
@@ -32,9 +34,10 @@ document.getElementById('meme-form').addEventListener('submit', function (e) {
   });
 
   //add elements to meme div
-  memeDiv.appendChild(img);
-  memeDiv.appendChild(topTextDiv);
-  memeDiv.appendChild(bottomTextDiv);
+  innerMeme.appendChild(img);
+  innerMeme.appendChild(topTextDiv);
+  innerMeme.appendChild(bottomTextDiv);
+  memeDiv.appendChild(innerMeme)
   memeDiv.appendChild(removeBtn);
 
   //add meme div to container
